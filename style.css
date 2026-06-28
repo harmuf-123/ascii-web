@@ -1,0 +1,17 @@
+body{
+    margin:0;
+    background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+#ascii{
+
+    font-family: Consolas, monospace;
+    font-size:8px;
+    line-height:8px;
+    white-space:pre;
+}
