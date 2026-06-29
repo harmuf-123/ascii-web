@@ -12,6 +12,22 @@
 <pre id="ascii"></pre>
 
 <script src="script.js"></script>
+ <audio id="myAudio" autoplay loop>
+      <source src="music/blurr.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+    <script>
+      function toggleAudio() {
+        var audio = document.getElementById("myAudio");
+
+        if (audio.paused) {
+          audio.play();
+        } else {
+          audio.pause();
+        }
+      }
+    </script>
+
 
 </body>
 </html>
