@@ -6,28 +6,69 @@
     <title>ASCII Animation</title>
 
     <link rel="stylesheet" href="style.css">
+    <style>
+      #musicBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.9);
+    color: #333;
+
+    font-size: 22px;
+    cursor: pointer;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+
+    transition: .3s;
+    z-index: 9999;
+}
+
+#musicBtn:hover {
+    transform: scale(1.1);
+}
+    </style>
 </head>
 <body>
 
 <pre id="ascii"></pre>
 
 <script src="script.js"></script>
- <audio id="myAudio" autoplay loop>
-      <source src="music/blurr.mp3" type="audio/mp3" />
-      Your browser does not support the audio element.
-    </audio>
-    <script>
-      function toggleAudio() {
-        var audio = document.getElementById("myAudio");
+ <audio id="myAudio" loop>
+    <source src="music/blurr.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+</audio>
 
-        if (audio.paused) {
-          audio.play();
-        } else {
-          audio.pause();
-        }
-      }
-    </script>
+<button id="musicBtn" onclick="toggleAudio()">
+    🔇
+</button>
+<script>
+  const audio = document.getElementById("myAudio");
+const btn = document.getElementById("musicBtn");
 
+function openInvitation() {
+    audio.play();
+    btn.innerHTML = "🎵";
+
+    // kode lain untuk membuka undangan
+}
+
+function toggleAudio() {
+    if (audio.paused) {
+        audio.play();
+        btn.innerHTML = "🎵";
+    } else {
+        audio.pause();
+        btn.innerHTML = "🔇";
+    }
+}
+</script>
 
 </body>
 </html>
