@@ -7,27 +7,25 @@
 
     <link rel="stylesheet" href="style.css">
     <style>
-      #musicBtn {
+    #musicBtn {
     position: fixed;
-    bottom: 20px;
     right: 20px;
+    bottom: 20px;
 
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
 
     border: none;
     border-radius: 50%;
-
-    background: rgba(255,255,255,0.9);
+    background: #ffffff;
     color: #333;
-
-    font-size: 22px;
+    font-size: 24px;
     cursor: pointer;
 
-    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,.3);
+    z-index: 9999;
 
     transition: .3s;
-    z-index: 9999;
 }
 
 #musicBtn:hover {
@@ -40,32 +38,33 @@
 <pre id="ascii"></pre>
 
 <script src="script.js"></script>
- <audio id="myAudio" loop>
+ <audio id="myAudio" loop preload="auto">
     <source src="music/blurr.mp3" type="audio/mpeg">
     Browser Anda tidak mendukung audio.
 </audio>
 
-<button id="musicBtn" onclick="toggleAudio()">
-    🔇
+<button id="musicBtn" onclick="toggleAudio()" title="Putar Lagu">
+    ▶
 </button>
 <script>
-  const audio = document.getElementById("myAudio");
-const btn = document.getElementById("musicBtn");
-
-function openInvitation() {
-    audio.play();
-    btn.innerHTML = "🎵";
-
-    // kode lain untuk membuka undangan
-}
+const audio = document.getElementById("myAudio");
+const musicBtn = document.getElementById("musicBtn");
 
 function toggleAudio() {
     if (audio.paused) {
-        audio.play();
-        btn.innerHTML = "🎵";
+        audio.play()
+            .then(() => {
+                musicBtn.innerHTML = "🎵";
+                musicBtn.title = "Matikan Lagu";
+            })
+            .catch((err) => {
+                console.log(err);
+                alert("Silakan tekan tombol sekali lagi untuk memulai musik.");
+            });
     } else {
         audio.pause();
-        btn.innerHTML = "🔇";
+        musicBtn.innerHTML = "🔇";
+        musicBtn.title = "Putar Lagu";
     }
 }
 </script>
