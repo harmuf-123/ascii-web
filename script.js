@@ -1,6 +1,6 @@
 const ASCII = "@%#*+=-:. ";
 
-const width = 90;
+const width = 120;
 
 const gambar = [
     "foto1.jpg",
